@@ -1,0 +1,189 @@
+File handling
+------------------
+Its not recommended to store the username and password in the program files
+
+Different ways to manage the data
+--------------------------------------
+
+1. Get the data at the run time using a scanner class
+Advantage: No need to store the data in the machine as we are going to provide the data at run time
+Data will be secured
+2. Can pass the test data as a command line argument at the run time
+
+3. Connect to the database and get the data at the run time
+
+4. Call randomn methods to generate test data randomnly which can be passed as test data to the application
+This method is applicable only for free test data
+
+5. Storing test data in external file --- most traditional way--however for real time automation we usually use this method
+Can store the data in .xls/.xlsx, notepad, csv, pdf, logfile, property files etc.
+
+Handling the files - read and writed data using the files
+Below are the various types of file taht can be used for automation
+1. text file
+2. properties file
+3. excel file
+3. csv file
+4. pdf file
+5. .xml
+6. log file
+7. html file
+
+Sample test Case to Login
+-------------------------
+
+Test Case: Verify and validate the login
+Step1: open(property file)  example value: Chrome
+Step2: navigate(propertyfile)  example value : gmail.com
+Step3: type(excelfile, propertyfile) example value: merin, ID=001where ID=001 , is the address of the username webobject
+Step4: type(excelfile, ID=002) where ID=002 is the address of the password webobject
+Step 5: click(login, ID3=003) where ID=003 is the address of the password webobject
+Step6: verify(logfile) login sucessful or not
+Step7: readData(all your emails)
+Step8: store(textfile) store data from application
+Step9: generateReport(htmlfile)
+
+All the testdata and test cases can be managed in an excel file while running the automation
+
+In real time property file is used to manage the object address, url , browser name et in property file
+
+text file- .txt (extract data from application and save in the tx file, usually save output)
+property file - .properties
+excel -xlsx (macro wuld be enabled in excel
+log -.log  (stack of your excecution would be mainted in the log file)
+csv -.csv   (mainly for raw data)
+pdf -.pdf
+xml -.xml (test data can be stored here using tabs, nowadays API is using xml file)
+html - .html (for tracking the report for the sttaus of the test run)
+word -.docx
+
+
+How to craete, read data from excel file, write data into an excel file through a JAVA program
+----------------------------------------------------------------------------------------------
+File handling is possible in JAVA through Streams
+1. Connect to the file - using Streams we can coonect to file where ever its located in the harddisk
+
+2. Read/Write to the file
+
+C:\Automation\Filehandling
+
+Creating a new file
+------------------------
+
+There is an inbuilt class in JAVA called File
+Create a new object to the File class
+example: File f = new File();
+
+There is a method called create in JAVA
+f.create
+f.createNewFile();
+
+example: 
+import java.io.File;
+import java.io.IOException;
+
+public class FilehandlingSample {
+
+	public static void main(String[] args) throws IOException {
+	
+		File f = new File("C:\\Automation\\Filehandling\\Samplefile.txt");
+		f.createNewFile();
+	}
+
+}
+
+File will be created in the path specifed and the new provided
+
+\\ is only for windows
+single forward  \ is for Linux 
+
+So its better to give single forward \ in the program
+
+import java.io.File;
+import java.io.IOException;
+
+public class FilehandlingSample {
+
+	public static void main(String[] args) throws IOException {
+	
+		File f = new File("C:/Automation/Filehandling/Samplefile.txt");
+		f.createNewFile();
+		
+		File g = new File("C:/Automation/Filehandling/Samplefile.csv");
+		g.createNewFile();
+	}
+
+}
+
+How to write to an exiting file
+-------------------------------
+
+There is an inbuilt calss in JAVA called BufferedWriter
+Create a new object for BuffersWriter Class
+BufferedWriter bf = new BufferedWriter();
+
+import
+import java.io.BufferedWriter;
+
+To connect to the file we need to use Streams
+There is an inbuilt class in JAVA called FileWriter which is used as a Stream to connect to the file to which we need to write
+
+So first we need to connect to file using FileWriter Classs
+Create a new object for the FileWriter class
+FileWriter fw = new FileWriter();
+import java.io.FileWriter;
+
+Give the path of the file to which we need to write inside the ()
+example:
+FileWriter fw = new FileWriter("C:/Automation/Filehandling/hello.txt");
+
+Pass the FileWriter object name in the () of BufferedWriter class
+BufferedWriter bf = new BufferedWriter(fw);
+
+there is a method called write under BufferedWriter calss which can be used to write
+
+bf.write("Merin Elizabeth John");
+
+mandatory:  we neeed to close the file once written
+there is amthod called close
+bf.close();
+
+if we need to do a next line there is a method called bf.newLine();
+------------------------------------------------------------------
+
+March 13 th Class
+----------------
+bufferedwriter classs always override the existing data in the file. If we need to append some data and do not override the eisting data, add true to the filewriter
+
+
+FileWriter fw = new FileWriter("C:/Automation/Filehandling/hello.txt",true);
+
+How to read data from the text file
+--------------------------------------
+
+handling Reading and Writing excel file
+For handling excel file we dont ahve any inbuilt class in Java
+So would need to use the APCHE xlsReader class
+xlxReader class is ot an inbuilt JAVA class. Is an external file provided by APACHE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
